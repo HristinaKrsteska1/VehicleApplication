@@ -1,0 +1,27 @@
+﻿@model VehicleApplication.Models.NewVehicleViewModel
+@{
+    ViewBag.Title = "NewVehicle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Vehicle</h2>
+
+@using (@Html.BeginForm("CreateVehicle", "Vehicle"))
+{
+    <div class="form-group">
+        @Html.LabelFor(v => v.Vehicle.LicencePlateNumber)
+        @Html.TextBoxFor(v => v.Vehicle.LicencePlateNumber, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(v => v.Vehicle.VIN)
+        @Html.TextBoxFor(v => v.Vehicle.VIN, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(v => v.Vehicle.MarkaNaVoziloId)
+        @Html.DropDownListFor(v => v.Vehicle.MarkaNaVoziloId, new SelectList(Model.MarkaNaVozilo, "Id", "ModelName"), "Select Model Name ", new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button> 
+    @Html.ActionLink("Back to List", "Index")
+}
+

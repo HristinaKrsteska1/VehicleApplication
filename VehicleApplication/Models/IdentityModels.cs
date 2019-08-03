@@ -20,9 +20,13 @@ namespace VehicleApplication.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<MarkaNaVozilo> MarkaNaVozilo { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+         
         }
 
         public static ApplicationDbContext Create()

@@ -1,0 +1,30 @@
+﻿@model VehicleApplication.Models.NewVehicleViewModel
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Are you sure you want to delete this vehicle?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt> Licence Plate Number:</dt>
+        <dd>@Model.Vehicle.LicencePlateNumber</dd>
+
+        <dt>Vehicle VIN:</dt>
+        <dd>@Model.Vehicle.VIN</dd>
+
+        <dt>Vehicle Model Name</dt>
+        <dd>@Model.Vehicle.MarkaNaVozilo.ModelName</dd>
+
+        <dt>Vehicle Model Code</dt>
+        <dd>@Model.Vehicle.MarkaNaVozilo.ModelCode</dd>
+    </dl>
+
+    @using (Html.BeginForm("Delete", "Vehicle"))
+    {
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>       
+    }
+</div>

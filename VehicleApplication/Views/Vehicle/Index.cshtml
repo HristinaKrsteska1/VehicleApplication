@@ -1,0 +1,53 @@
+﻿@model  IEnumerable<VehicleApplication.Models.Vehicle>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Vehicles</h2>
+
+@using (Html.BeginForm("Index", "Vehicle", FormMethod.Get))
+{
+    <p>
+        Seach by Model Name: @Html.TextBox("searching")
+        <input type="submit" value="Seach" />
+    </p>
+    <br />
+}
+
+@if (!Model.Any())
+{
+    <p>We don't have any vehicles yet.</p>
+}
+else
+{
+    <button onclick="location.href='@Url.Action("NewVehicle", "Vehicle")'" class="btn btn-dark"> New Vehicle</button>
+    @Html.ActionLink("Print", "PrintAllVehicles", "Vehicle", new { @class = "btn btn-default" })
+    <br />
+    <br />
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Vehicle Registration Number</th>
+                <th>VIN</th>
+                <th>@Html.ActionLink("Model Name", "Index", new { sortOrder = ViewBag.NameSortParm })</th>
+                <th>Vehicle Model Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var vehicle in Model)
+            {
+                <tr>
+                    <td>@vehicle.LicencePlateNumber</td>
+                    <td>@vehicle.VIN</td>
+                    <td>@vehicle.MarkaNaVozilo.ModelName</td>
+                    <td>@vehicle.MarkaNaVozilo.ModelCode</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = vehicle.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = vehicle.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

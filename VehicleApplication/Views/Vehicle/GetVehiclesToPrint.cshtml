@@ -1,0 +1,40 @@
+﻿@model IEnumerable<VehicleApplication.Models.Vehicle>
+@{
+    ViewBag.Title = "GetVehiclesToPrint";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+<h2>Vehicles </h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Vehicle Registration Number</th>
+            <th>VIN</th>
+            <th>Vehicle Model Name</th>
+            <th>Vehicle Model Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vehicle in Model)
+        {
+            <tr>
+                <td>@vehicle.LicencePlateNumber</td>
+                <td>@vehicle.VIN</td>
+                <td>@vehicle.MarkaNaVozilo.ModelName</td>
+                <td>@vehicle.MarkaNaVozilo.ModelCode</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Styles
+{
+    <style type="text/css" media="print">
+        @@media print {
+            .container {
+               display:none;
+            }              
+        }
+</style>
+}
