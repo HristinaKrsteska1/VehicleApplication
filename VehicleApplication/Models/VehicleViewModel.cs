@@ -5,7 +5,7 @@ using System.Web;
 
 namespace VehicleApplication.Models
 {
-    public class NewVehicleViewModel
+    public class VehicleViewModel
     {
         public IEnumerable<MarkaNaVozilo> MarkaNaVozilo { get; set; }
 

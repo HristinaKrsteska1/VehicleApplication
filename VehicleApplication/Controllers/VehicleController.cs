@@ -52,7 +52,7 @@ namespace VehicleApplication.Controllers
         {
             var markaNaVozilo = _dbContext.MarkaNaVozilo.ToList();
 
-            var viewModel = new NewVehicleViewModel
+            var viewModel = new VehicleViewModel
             {
                 MarkaNaVozilo = markaNaVozilo
             };
@@ -76,7 +76,7 @@ namespace VehicleApplication.Controllers
                 return HttpNotFound();
             }
 
-            var viewModel = new NewVehicleViewModel
+            var viewModel = new VehicleViewModel
             {
                 Vehicle = vehicle,
                 MarkaNaVozilo = _dbContext.MarkaNaVozilo.ToList()
@@ -106,7 +106,7 @@ namespace VehicleApplication.Controllers
                 return HttpNotFound();
             }
 
-            var viewModel = new NewVehicleViewModel
+            var viewModel = new VehicleViewModel
             {
                 MarkaNaVozilo = _dbContext.MarkaNaVozilo.ToList(),
                 Vehicle = vehicle
